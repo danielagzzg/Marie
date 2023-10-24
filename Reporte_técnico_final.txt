@@ -1,0 +1,74 @@
+﻿// Daniela González Garza 
+// A01285593
+// Reporte Técnico Final 
+// TC1032
+
+
+Clear 
+
+// Recibe 20 datos el sensor de aceleración 
+CicloInput, Input
+StoreI Loc
+Store Temp
+Output
+Load SumaTotal
+Add Temp
+Store SumaTotal
+Load Loc
+Add Uno
+Store Loc
+Load Iterador
+Subt Uno
+Store Iterador 
+Skipcond 400
+Jump CicloInput
+Jump Division
+
+
+// Hace la división 
+Division, Load SumaTotal
+Subt Veinte
+Store SumaTotal
+Skipcond 800
+Jump VerCero
+Load valorPromedio
+Add Uno
+Store valorPromedio
+Jump Division
+
+
+// Verifica si el AC es 0 o negativo
+VerCero, Skipcond 400
+Jump Residuo
+Load valorPromedio
+Add Uno
+Store valorPromedio
+Jump PrintProm
+
+
+// Calcula residuo
+Residuo, Load SumaTotal
+Add Veinte
+Store Sobra
+Jump PrintProm
+
+
+// Imprime el promedio de los datos 
+PrintProm, Load valorPromedio
+Output 
+Load Sobra
+Output 
+Halt
+
+
+// Variables 
+Loc, HEX 0x050
+Iterador, DEC 20
+Uno, DEC 1
+Veinte, DEC 20
+Temp, DEC 0
+SumaTotal, DEC 0
+valorPromedio, DEC 0
+Sobra, DEC 0
+
+
